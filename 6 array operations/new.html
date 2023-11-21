@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Operations</title>
+</head>
+
+<body style="text-align: center; background-color: royalblue;">
+
+    <hr>
+    <h1>Array Operations</h1>
+    Enter array size: <input id="arraySize" name="arraySize">
+    <p><button onclick="initializeArray()">Initialize Array</button></p>
+    Enter array values (comma-separated): <input id="arr" name="arr">
+    <p><button onclick="arrayInput()">Input Array</button></p>
+    <p>Enter value to delete: <input id="delete" name="delete">
+    <button onclick="deleteValue()">Delete Value</button></p>
+    <p>Enter value to find: <input id="fnd" name="fnd">
+    <button onclick="findValue()">Find Value</button></p>
+    <p><button onclick="emptyArray()">Empty Array</button></p>
+    <p><button onclick="displayArray()">Display Array</button></p>
+    <p id="res"></p>
+
+    <script>
+        var myArray = [];
+        var arraySize = 0;
+
+        function initializeArray() {
+            arraySize = parseInt(document.getElementById('arraySize').value);
+            myArray = [];
+            var str = "Array initialized with size: " + arraySize;
+            document.getElementById("res").innerHTML = str;
+        }
+
+        function arrayInput() {
+            if (arraySize === 0) {
+                document.getElementById("res").innerHTML = "Initialize the array size first.";
+                return;
+            }
+            var arr = document.getElementById('arr').value;
+            var elements = arr.split(',');
+
+            if (elements.length > arraySize) {
+                document.getElementById("res").innerHTML = "Error: Input exceeds array size.";
+                return;
+            }
+
+            myArray = elements;
+            var str = "Array: " + myArray.join(', ');
+            document.getElementById("res").innerHTML = str;
+        }
+
+        function deleteValue() {
+            var val = document.getElementById('delete').value;
+            var index = myArray.indexOf(val);
+            if (index === -1) {
+                var str = "Value: " + val + " is not present in the array";
+                document.getElementById("res").innerHTML = str;
+            } else {
+                myArray.splice(index, 1);
+                var str = "Value: " + val + " is deleted";
+                document.getElementById("res").innerHTML = str;
+            }
+        }
+
+        function findValue() {
+            var val = document.getElementById('fnd').value;
+            var index = myArray.indexOf(val);
+            if (index === -1) {
+                var str = "Value: " + val + " is not present in the array";
+                document.getElementById("res").innerHTML = str;
+            } else {
+                var str = "Value: " + val + " is present in the array at index " + index;
+                document.getElementById("res").innerHTML = str;
+            }
+        }
+
+        function emptyArray() {
+            myArray = [];
+            document.getElementById("res").innerHTML = "Array is Emptied";
+        }
+
+        function displayArray() {
+            var str = "Array: " + myArray.join(', ');
+            document.getElementById("res").innerHTML = str;
+        }
+    </script>
+</body>
+
+</html>

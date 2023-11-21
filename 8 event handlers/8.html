@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Background Color Changer</title>
+    <style>
+        button {
+            width: 300px;
+            height: 300px;
+            margin: 10px;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            height: 30px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-container" style="background-color: blue; width: 100vw; height: 100vh;">
+        <button id="hoverButton">
+            <h1>Hover me (yellow)</h1>
+        </button>
+        <input type="text" id="focusInput" placeholder= "Focus me ()" onfocus="changeBackgroundColor('Red')">
+    </div>
+
+
+
+    <script>
+        const mainContainer = document.getElementById('main-container');
+        const hoverButton = document.getElementById('hoverButton');
+        const focusInput = document.getElementById('focusInput');
+
+       
+        hoverButton.addEventListener('mouseover', function() {
+            mainContainer.style.backgroundColor = 'yellow';
+        });
+
+        hoverButton.addEventListener('mouseout', function() {
+            mainContainer.style.backgroundColor = 'blue';
+        });
+
+        function changeBackgroundColor(color) {
+            focusInput.style.backgroundColor = color;
+        }
+    </script>
+</body>
+</html>
