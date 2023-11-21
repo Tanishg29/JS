@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>String Operations</h1>
+    
+    <script>
+        function transformString(isUpperCase) {
+            var inputString = document.getElementById("inputString").value;
+            var usePadding = document.getElementById("usePadding").checked;
+            var padding = usePadding ? document.getElementById("padding").value : "";
+
+            var transformedString = isUpperCase ? inputString.toUpperCase() : inputString.toLowerCase();
+            transformedString = usePadding ? padding + " " + transformedString : transformedString;
+
+            document.getElementById("result").innerText = transformedString;
+        }
+    </script>
+
+    <label for="inputString">Input String:</label>
+    <input type="text" id="inputString" placeholder="Enter a string">
+
+    <br>
+
+    <label for="usePadding">Use Padding:</label>
+    <input type="checkbox" id="usePadding">
+
+    <br>
+
+    <label for="padding">Padding:</label>
+    <input type="text" id="padding" placeholder="Enter padding">
+
+    <br>
+
+    <button onclick="transformString(true)">Transform to Uppercase</button>
+    <button onclick="transformString(false)">Transform to Lowercase</button>
+
+    <br>
+
+    <p id="result"></p>
+</body>
+</html>
